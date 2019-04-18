@@ -1,6 +1,7 @@
 import random
 
 # 1. Найти сумму и произведение цифр трехзначного числа, которое вводит пользователь.
+# http://primat.org/index/redaktor_blok_skhem/0-130
 
 print("\nEx.1\n")
 num = int(input('add 3 digit number: '))
