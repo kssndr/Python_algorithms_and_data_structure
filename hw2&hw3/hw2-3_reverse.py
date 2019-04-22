@@ -18,11 +18,21 @@
 # print(reverse(n))
 
 
-def reverse(num):
-    if len(num)-1 == 0:
-        return num
-    return num[len(num)-1] + reverse(num[:len(num)-1])
+# def reverse(num):
+#     if len(num)-1 == 0:
+#         return num
+#     return num[len(num)-1] + reverse(num[:len(num)-1])
+#
+#
+# n = str(input())
+# print(reverse(n))
+
+import string
+import random
+
+def randstring(n):
+    a = string.ascii_letters + string.digits
+    return ''.join([random.choice(a) for i in range(n)])
 
 
-n = str(input())
-print(reverse(n))
+print(type(randstring(10)))

@@ -86,20 +86,20 @@
 #         return str(a) + " " + row(a - 1, b)
 #
 #
+# # s = 10
+# # d = 5
+# # print(row(s, d))
+#
+#
+# def row(a, b):
+#     print(a, end=" ")
+#     if a < b:
+#         row(a + 1, b)
+#     elif a > b:
+#         row(a - 1, b)
+#
+#
 # s = 10
 # d = 5
-# print(row(s, d))
-
-
-def row(a, b):
-    print(a, end=" ")
-    if a < b:
-        row(a + 1, b)
-    elif a > b:
-        row(a - 1, b)
-
-
-s = 10
-d = 5
-row(s, d)
+# row(s, d)
 
