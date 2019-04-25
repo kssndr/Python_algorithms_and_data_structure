@@ -34,9 +34,9 @@ aa = int(input("введите размер массива "))
 a = [random.randint(-100, 100) for i in range(aa)]
 # print(a)
 
-print(timeit.timeit("aut(a)", setup="from __main__ import aut", number=1, globals={"a": a}))
-print(timeit.timeit("grey(a)", setup="from __main__ import grey", number=1, globals={"a": a}))
-print(timeit.timeit("man(a)", setup="from __main__ import man", number=1, globals={"a": a}))
+print(timeit.timeit("aut(a)", setup="from __main__ import aut", number=10000, globals={"a": a}))
+print(timeit.timeit("grey(a)", setup="from __main__ import grey", number=10000, globals={"a": a}))
+print(timeit.timeit("man(a)", setup="from __main__ import man", number=10000, globals={"a": a}))
 
 
 # https://www.yuripetrov.ru/edu/python/ch_06_01.html

@@ -6,14 +6,18 @@
 import timeit
 
 
-def nat(n):
-    for i in range(1, n + 1):
+def natur(ff: int):
+    s = []
+    for i in range(1, ff + 1):
         for j in range(2, i):
             if i % j == 0:
                 break
         else:
-            print(i)
+            s.append(i)
 
 
+a = int(input())
+natur(a)
 
-print(timeit.timeit("nat(20)", setup="from __main__ import nat", number=100))
+print(timeit.timeit("natur(ff)", setup="from __main__ import natur", number=1, globals={"ff": ff}))
+
