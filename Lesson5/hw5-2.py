@@ -19,8 +19,7 @@ import collections
 
 
 def abs123(q):
-    l = len(q)
-    for i in range(l):
+    for i in range(len(q)):
         if q[i] == 'a':
             q[i] = 10
         elif q[i] == 'b':
@@ -35,9 +34,9 @@ def abs123(q):
             q[i] = 15
     return q
 
+
 def to16(s):
-    l = len(s)
-    for i in range(l):
+    for i in range(len(s)):
         if s[i] == 10:
             s[i] = 'a'
         elif s[i] == 11:
@@ -51,6 +50,7 @@ def to16(s):
         elif s[i] == 15:
             s[i] = 'f'
     return s
+
 
 def sum16(x, y):
     z = []
@@ -77,7 +77,7 @@ def sum16(x, y):
     return to16(z[::-1])
 
 
-a = input("введите первое число в 16 формате: ")
+a = input("\nвведите первое число в 16 формате: ")
 b = input("введите второе число в 16 формате: ")
 # a = 'fa12c'
 # b = '39bd'
@@ -89,4 +89,4 @@ sum = sum16(aa, bb)
 print(f"Сумма чисел {a} и {b}:")
 for i in sum:
     print(i, end="")
-    
+
