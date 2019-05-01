@@ -62,9 +62,8 @@ def sum16(x, y):
     else:
         for i in range(len(yy) - len(xx)):
             xx.append(0)
-    l = len(xx)
     p, zz, zzz = 0, 0, 0
-    for i in range(l):
+    for i in range(len(xx)):
         zz = int(xx[i]) + int(yy[i]) + p
         if zz >= 16:
             p = zz // 16
@@ -73,20 +72,44 @@ def sum16(x, y):
             zzz = zz
             p = 0
         z.append(zzz)
-
+    if p > 0:
+        z.append(p)
+    # print(z, to16(z[::-1]))
     return to16(z[::-1])
 
 
-a = input("\nвведите первое число в 16 формате: ")
-b = input("введите второе число в 16 формате: ")
-# a = 'fa12c'
-# b = '39bd'
+def to10(x):
+    xx = abs123(x)
+    tenn = 0
+    for i in range(len(xx)):
+        ll = len(xx) - i - 1
+        s = 16 ** ll
+        ten = int(xx[i]) * s
+        tenn += ten
+    return tenn
+
+
+a = input("\nВведите первое число в 16 формате: ")
+b = input("Введите второе число в 16 формате: ")
+# a = 'ff'
+# b = 'fffff'
 aa = list(a)
 bb = list(b)
 
 sum = sum16(aa, bb)
 
-print(f"Сумма чисел {a} и {b}:")
+print(f"\nСумма чисел {a} и {b}:")
 for i in sum:
     print(i, end="")
 
+print()
+# print("bb", to10(bb), "aa", to10(aa))
+
+dd = aa
+for i in range(to10(bb)-1):
+    dd = sum16(aa, dd)
+
+print(f"\nПроизведение чисел {a} и {b}:")
+for i in dd:
+    print(i, end="")
+print(f"\n\nцифры в десятичном формате:\na = {to10(aa)}\nb = {to10(bb)}\nsum = {to10(sum)}\nmul = {to10(dd)}")
