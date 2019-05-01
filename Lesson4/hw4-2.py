@@ -4,7 +4,7 @@
 
 
 import timeit
-
+import cProfile
 # нахождение простых числе через перебор делителей
 
 
@@ -43,10 +43,18 @@ def erat(f):
     return s
 
 
-f = int(input())
-print(natur(f))
-print(timeit.timeit("natur(f)", setup="from __main__ import natur", number=1, globals={"f": f}))
-print(erat(f))
-print(timeit.timeit("erat(f)", setup="from __main__ import erat", number=1, globals={"f": f}))
+def main():
+    f = int(input())
+    print(natur(f))
+    print(timeit.timeit("natur(f)", setup="from __main__ import natur", number=1, globals={"f": f}))
+    print(erat(f))
+    print(timeit.timeit("erat(f)", setup="from __main__ import erat", number=1, globals={"f": f}))
+
+
+main()
+
+cProfile.run("main()")
+
+
 
 
