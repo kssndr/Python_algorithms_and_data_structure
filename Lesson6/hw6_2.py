@@ -46,7 +46,7 @@ def main():
         w = str(type(eval(i)))
         if not i.startswith('__') and w != "<class 'module'>":
             print(f"адрес {id(i)}, {i}, размер {sys.getsizeof(eval(i))}, {type(eval(i))}, кол-во ссылок {sys.getrefcount(i)}")
-            totalsize += sys.getsizeof(i)
+            totalsize += sys.getsizeof(eval(i))
     print(f"Общий объем памяти для всех переменных {totalsize}")
     # print(dir())
     # print(sys.getsizeof(q))

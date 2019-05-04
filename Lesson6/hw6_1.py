@@ -14,7 +14,7 @@ import platform
 import sys
 from memory_profiler import profile
 from memory_profiler import memory_usage
-# import cProfile
+import cProfile
 
 # def profile(func):
 #     """Decorator for run function profile"""
@@ -124,7 +124,15 @@ def main():
         print(i, end="")
     print(f"\n\nцифры в десятичном формате:\na = {to10(aa)}\nb = {to10(bb)}\nsum = {to10(sum)}\nmul = {to10(dd)}\n\n")
 
-    print("\n\nДомашнее задание 6")
+    print(
+        """
+            \n\nДомашнее задание 6
+            
+            Версия Python -  3.7.2 (default, Jan 13 2019, 12:50:15) 
+            [Clang 10.0.0 (clang-1000.11.45.5)]
+            Разрядность ОС -  ('64bit', '')
+    
+        """)
 
     print("Версия Python - ", sys.version)
     print("Разрядность ОС - ", platform.architecture())
@@ -139,21 +147,21 @@ def main():
         w = str(type(eval(i)))
         if not i.startswith("_") and w != "<class 'module'>":
             print(f"адрес {id(i)}, {i}, размер {sys.getsizeof(eval(i))}, {type(eval(i))}, кол-во ссылок {sys.getrefcount(i)}")
-            totalsize += sys.getsizeof(i)
+            totalsize += sys.getsizeof(eval(i))
     print(f"Общий объем памяти для всех переменных программы {totalsize}")
 
 if __name__ == '__main__':
     main()
 
 
-# cProfile.run('main()')
+cProfile.run('main()')
 
 totalsize = 0
 for i in dir():
     w = str(type(eval(i)))
     if not i.startswith("_") and w != "<class 'module'>":
         print(f"адрес {id(i)}, {i}, размер {sys.getsizeof(eval(i))}, {type(eval(i))}, кол-во ссылок {sys.getrefcount(i)}")
-        totalsize += sys.getsizeof(i)
+        totalsize += sys.getsizeof(eval(i))
 print(f"Общий объем памяти для всех модулей программы {totalsize}")
 print("использованно памяти", memory_usage())
 
