@@ -12,17 +12,19 @@
 
 import platform
 import sys
-import cProfile
+from memory_profiler import profile
+from memory_profiler import memory_usage
+# import cProfile
 
-def profile(func):
-    """Decorator for run function profile"""
-    def wrapper(*args, **kwargs):
-        profile_filename = func.__name__ + '.prof'
-        profiler = cProfile.Profile()
-        result = profiler.runcall(func, *args, **kwargs)
-        profiler.dump_stats(profile_filename)
-        return result
-    return wrapper
+# def profile(func):
+#     """Decorator for run function profile"""
+#     def wrapper(*args, **kwargs):
+#         profile_filename = func.__name__ + '.prof'
+#         profiler = cProfile.Profile()
+#         result = profiler.runcall(func, *args, **kwargs)
+#         profiler.dump_stats(profile_filename)
+#         return result
+#     return wrapper
 
 
 
@@ -122,31 +124,38 @@ def main():
         print(i, end="")
     print(f"\n\nцифры в десятичном формате:\na = {to10(aa)}\nb = {to10(bb)}\nsum = {to10(sum)}\nmul = {to10(dd)}\n\n")
 
+    print("\n\nДомашнее задание 6")
+
+    print("Версия Python - ", sys.version)
+    print("Разрядность ОС - ", platform.architecture())
+    # print("\n\nref number of a", sys.getrefcount(a))  # сколько ссылок у данной переменной
+    # print("a", asizeof.asizeof(a), type(a))  # сколько памяти потребляется переменной а
+    # # print(sys.getsizeof(a))
+    # print("aa", asizeof.asizeof(aa), type(aa), id(aa))  # сколько памяти потребляется переменной, тип, адреса памяти
+    # print("dd", asizeof.asizeof(dd), type(dd))  # сколько памяти потребляется переменной а
+    print("\nСтатистика по переменным\n")
+    totalsize = 0
+    for i in dir():
+        w = str(type(eval(i)))
+        if not i.startswith("_") and w != "<class 'module'>":
+            print(f"адрес {id(i)}, {i}, размер {sys.getsizeof(eval(i))}, {type(eval(i))}, кол-во ссылок {sys.getrefcount(i)}")
+            totalsize += sys.getsizeof(i)
+    print(f"Общий объем памяти для всех переменных программы {totalsize}")
 
 if __name__ == '__main__':
     main()
 
 
-print("\n\nДомашнее задание 6")
-
 # cProfile.run('main()')
 
-print("Версия Python - ", sys.version)
-print("Разрядность ОС - ", platform.architecture())
-# print("\n\nref number of a", sys.getrefcount(a))  # сколько ссылок у данной переменной
-# print("a", asizeof.asizeof(a), type(a))  # сколько памяти потребляется переменной а
-# # print(sys.getsizeof(a))
-# print("aa", asizeof.asizeof(aa), type(aa), id(aa))  # сколько памяти потребляется переменной, тип, адреса памяти
-# print("dd", asizeof.asizeof(dd), type(dd))  # сколько памяти потребляется переменной а
-print("\nСтатистика по переменным\n")
 totalsize = 0
 for i in dir():
     w = str(type(eval(i)))
     if not i.startswith("_") and w != "<class 'module'>":
         print(f"адрес {id(i)}, {i}, размер {sys.getsizeof(eval(i))}, {type(eval(i))}, кол-во ссылок {sys.getrefcount(i)}")
         totalsize += sys.getsizeof(i)
-print(f"Общий объем памяти для всех переменных {totalsize}")
-
+print(f"Общий объем памяти для всех модулей программы {totalsize}")
+print("использованно памяти", memory_usage())
 
 
 # Чтобы получить имена:
