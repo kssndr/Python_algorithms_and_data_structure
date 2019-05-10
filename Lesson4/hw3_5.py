@@ -40,3 +40,4 @@ print(timeit.timeit("man(a)", setup="from __main__ import man", number=10000, gl
 print("использованно памяти", memory_usage())
 
 # https://www.yuripetrov.ru/edu/python/ch_06_01.html
+
