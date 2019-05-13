@@ -48,7 +48,7 @@ def arrays_merge(a, b):
 # Модуль разделения массива
 # Вторая попытка - добавил рекурсионный вызов
 def array_split(array):
-    print("array", array)
+    # print("array", array)
     if len(array) < 2:
         return array
     mid = int(len(array) / 2)
