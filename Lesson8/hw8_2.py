@@ -6,7 +6,8 @@
 # 4. вывод дерева и таблицы буква: код
 
 import random
-import binarytree
+from binarytree import Node
+from binarytree import build
 
 v = int(input("Сгенерировать строку автоматически или ввести вручную? (1/2) "))
 
@@ -30,11 +31,16 @@ for i in range(len(ss)):
             q += 1
     l_q[ss[i]] = q
 print(l_q)
+l_q_s = dict(sorted(l_q.items(), key=lambda x: x[1]))
 
-print("sorted dict", sorted(l_q.items(), key=lambda x: x[1]))
-k = l_q.keys()
-v = l_q.values()
+# 3. создаем дерево по алгоритму Хаффмана
+
+
+print("sorted dict", l_q_s)
+k = l_q_s.keys()
+v = l_q_s.values()
 print("k", k)
 print("v", v)
-root = binarytree.build(v)
+root = build(v)
 print("root", root)
+print("leaves", root.leaves)
