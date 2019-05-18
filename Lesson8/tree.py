@@ -6,6 +6,13 @@ class Node:
         self.symbol = symbol
         self.frequency = frequency
 
+    def __str__(self):
+        return "Node[" + str(self.value) + "]"
 
 
+a = Node()
+a.frequency = 5
+a.symbol = 'a'
+a.value = 1
 
+print(a.symbol)
