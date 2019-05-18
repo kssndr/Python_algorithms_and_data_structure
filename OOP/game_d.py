@@ -27,7 +27,10 @@ class Card:
         return False
 
     def __repr__(self):
-        return self.values[self.value], self.suits[self.suit]
+        return str(self.values[self.value]) + " " + str(self.suits[self.suit])
 
+
+my_hand = Card(3, 2)
+print(my_hand)
 
 
