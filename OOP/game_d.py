@@ -112,7 +112,7 @@ class Game:
 
         win = self.winner(self.p1, self.p2)
 
-        print("Game over. {} winner!".format(win))
+        print("Game over. {} winner! {}/{}".format(win, self.p1.wins, self.p2.wins))
 
     def winner(self, p1, p2):
         if p1.wins > p2.wins:
